@@ -4,31 +4,29 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("Witaj na losowaniu 6 liczb");
-        //losowanie bez powtórzeń
-        //kolekcje
-        //mogą mieć tylko typy złożone
-        //po zadeklarowaniu można usuwać i dodawać elementy
+        Set<Integer> wylosowaneLiczby = new HashSet<>();
+        List<Integer> wpisaneLiczby = new ArrayList<>();
+        List<Integer> trafioneLiczby = new LinkedList<>();
+        wylosowaneLiczby = wylosowanieLiczb(6);
+        wpisaneLiczby = wpisanieLiczb(10);
+        trafioneLiczby = podsumowanie(wpisaneLiczby, wylosowaneLiczby);
+        System.out.println("Wylosowano:" + wylosowaneLiczby);
+        System.out.println("Trafiono:" + trafioneLiczby);
+    }
+
+    public static Set<Integer> wylosowanieLiczb(int n) {
         Set<Integer> wylosowane = new HashSet<>();
-        //zbiór zazwyczaj zawiera elementy bez powtórzeń
-        //zbiór zazwyczaj nie ma indeksowania elementów
-        while (wylosowane.size() < 6) {
+        while (wylosowane.size() < n) {
             wylosowane.add((int) (Math.random() * 100 + 1));
         }
-        for (int element : wylosowane) {
-            System.out.print(element + ", ");
-        }
-        System.out.println("wylosowane inaczej:");
-        System.out.println(wylosowane);
+        return wylosowane;
+    }
 
-        //wpisywanie 6 liczb z klawiatury
-        //dodajemy elementy na końcu listy
-        //na razie dowolnie potem bez powtórzeń
+    public static List<Integer> wpisanieLiczb(int n) {
         Scanner klawiatura = new Scanner(System.in);
-        //Lista to kolekcja w której można zmieniać rozmiar w trakcie działania programu
-        //elementy indeksowane mogą się powtarzać
         System.out.println("podaj 6 liczb");
         List<Integer> wpisane = new ArrayList<>();
-        while (wpisane.size() < 6) {
+        while (wpisane.size() < n) {
             int liczba = klawiatura.nextInt();
             while (wpisane.contains(liczba)) {
                 System.out.println("Już taką liczbę wpisano wpisz inną ");
@@ -36,14 +34,16 @@ public class Main {
             }
             wpisane.add(liczba);
         }
-        System.out.println(wpisane);
-        //sprawdzamy które wartości wpisane zostały wylosowane
+        return wpisane;
+    }
+
+    public static List<Integer> podsumowanie(List<Integer> wpisane,
+                                             Set<Integer> wylosowane) {
         List<Integer> trafione = new LinkedList<>();
-        //jeżeli wartość wpisana została wylosowana to dodajemy ją do trafione
         for (Integer wpisanaWartosc : wpisane) {
             if (wylosowane.contains(wpisanaWartosc))
                 trafione.add(wpisanaWartosc);
         }
-        System.out.println(trafione);
+        return trafione;
     }
 }

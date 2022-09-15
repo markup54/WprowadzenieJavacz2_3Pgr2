@@ -1,5 +1,4 @@
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,6 +17,20 @@ public class Main {
         for (int element : wylosowane) {
             System.out.print(element + ", ");
         }
+        System.out.println("wylosowane inaczej:");
+        System.out.println(wylosowane);
 
+        //wpisywanie 6 liczb z klawiatury
+        //dodajemy elementy na końcu listy
+        //na razie dowolnie potem bez powtórzeń
+        Scanner klawiatura = new Scanner(System.in);
+        //Lista to kolekcja w której można zmieniać rozmiar w trakcie działania programu
+        //elementy indeksowane mogą się powtarzać
+        System.out.println("podaj 6 liczb");
+        List<Integer> wpisane = new ArrayList<>();
+        for (int i = 0; i < 6; i++) {
+            wpisane.add(klawiatura.nextInt());
+        }
+        System.out.println(wpisane);
     }
 }

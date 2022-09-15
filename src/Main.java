@@ -10,6 +10,8 @@ public class Main {
         wylosowaneLiczby = wylosowanieLiczb(6);
         wpisaneLiczby = wpisanieLiczb(10);
         trafioneLiczby = podsumowanie(wpisaneLiczby, wylosowaneLiczby);
+        Collections.sort(wpisaneLiczby);
+        System.out.println("Wpisano:" + wpisaneLiczby);
         System.out.println("Wylosowano:" + wylosowaneLiczby);
         System.out.println("Trafiono:" + trafioneLiczby);
     }
@@ -24,7 +26,7 @@ public class Main {
 
     public static List<Integer> wpisanieLiczb(int n) {
         Scanner klawiatura = new Scanner(System.in);
-        System.out.println("podaj 6 liczb");
+        System.out.println("podaj " + n + " liczb");
         List<Integer> wpisane = new ArrayList<>();
         while (wpisane.size() < n) {
             int liczba = klawiatura.nextInt();

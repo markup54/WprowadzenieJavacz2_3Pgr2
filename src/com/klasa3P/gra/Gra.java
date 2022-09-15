@@ -13,17 +13,18 @@ public class Gra {
      */
     private Set<Integer> wylosowaneLiczby = new HashSet<>();
     private List<Integer> wpisaneLiczby = new ArrayList<>();
-    List<Integer> trafioneLiczby = new LinkedList<>();
+    private List<Integer> trafioneLiczby = new LinkedList<>();
 
-    public void wylosowanieLiczb(int n) {
+    private void wylosowanieLiczb(int n) {
         while (wylosowaneLiczby.size() < n) {
             wylosowaneLiczby.add((int) (Math.random() * 100 + 1));
         }
     }
 
-    public void wpisanieLiczb(int n) {
+    private void wpisanieLiczb(int n) {
         Scanner klawiatura = new Scanner(System.in);
         System.out.println("podaj " + n + " liczb");
+        wpisaneLiczby.clear();
         while (wpisaneLiczby.size() < n) {
             int liczba = klawiatura.nextInt();
             while (wpisaneLiczby.contains(liczba)) {
@@ -34,10 +35,19 @@ public class Gra {
         }
     }
 
-    public void podsumowanie() {
+    private void podsumowanie() {
         for (Integer wpisanaWartosc : wpisaneLiczby) {
             if (wylosowaneLiczby.contains(wpisanaWartosc))
                 trafioneLiczby.add(wpisanaWartosc);
         }
+    }
+
+    public void zagraj(int liczbaWpisanych) {
+        wylosowanieLiczb(6);
+        wpisanieLiczb(liczbaWpisanych);
+        podsumowanie();
+        System.out.println("Wylosowano:" + wylosowaneLiczby);
+        System.out.println("Wpisano:" + wpisaneLiczby);
+        System.out.println("Trafiono" + trafioneLiczby);
     }
 }

@@ -11,11 +11,11 @@ public class Gra {
     protected - w klasie i klasach potomnych oraz w pakiecie
     używanie private hermetyzacja
      */
-    private Set<Integer> wylosowaneLiczby = new HashSet<>();
+    private static Set<Integer> wylosowaneLiczby = new HashSet<>();
     private List<Integer> wpisaneLiczby = new ArrayList<>();
     private List<Integer> trafioneLiczby = new LinkedList<>();
 
-    private void wylosowanieLiczb(int n) {
+    private static void wylosowanieLiczb(int n) {
         while (wylosowaneLiczby.size() < n) {
             wylosowaneLiczby.add((int) (Math.random() * 100 + 1));
         }

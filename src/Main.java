@@ -28,8 +28,13 @@ public class Main {
         //elementy indeksowane mogą się powtarzać
         System.out.println("podaj 6 liczb");
         List<Integer> wpisane = new ArrayList<>();
-        for (int i = 0; i < 6; i++) {
-            wpisane.add(klawiatura.nextInt());
+        while (wpisane.size() < 6) {
+            int liczba = klawiatura.nextInt();
+            while (wpisane.contains(liczba)) {
+                System.out.println("Już taką liczbę wpisano wpisz inną ");
+                liczba = klawiatura.nextInt();
+            }
+            wpisane.add(liczba);
         }
         System.out.println(wpisane);
     }
